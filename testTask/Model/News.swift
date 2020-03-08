@@ -12,13 +12,16 @@ import Foundation
 struct AllUrlNews: Codable {
     var results: [NewsUrl]
 }
+
 struct NewsUrl: Codable  {
     var url: String
 }
+
 //MARK: - Название статей
 struct AllTitlesNews: Codable {
     var results: [NewsTitles]
 }
+
 struct NewsTitles: Codable {
     var title: String
 }

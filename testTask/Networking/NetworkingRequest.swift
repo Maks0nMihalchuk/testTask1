@@ -17,7 +17,6 @@ class Network {
     func newsRequest(compltion: (()->Void)) {
         //Запрос
         compltion()
-    
     }
 //MARK: - Parsing links of news
     class func newsParsing (categories: String, complition:  @escaping ()->()) {

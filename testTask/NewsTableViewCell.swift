@@ -19,5 +19,4 @@ class NewsTableViewCell: UITableViewCell {
         super.setSelected(selected, animated: animated)
         
     }
-
 }

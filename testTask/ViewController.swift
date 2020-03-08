@@ -15,6 +15,7 @@ class ViewController: UIViewController, WKUIDelegate {
     var url = ""
     var name = ""
     var arr = ""
+    
     var webView: WKWebView!
     
     override func loadView() {
@@ -31,7 +32,5 @@ class ViewController: UIViewController, WKUIDelegate {
         let myRequest = URLRequest(url: myURL!)
         webView.load(myRequest)
     }
-
-
 }
 

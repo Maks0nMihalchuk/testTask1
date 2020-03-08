@@ -7,19 +7,24 @@
 //
 
 import UIKit
+import Alamofire
+import WebKit
 
 class NewsTableViewController: UITableViewController {
     
     var name = ""
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         
         tableView.register(NewsTableViewCell.self, forCellReuseIdentifier: "NewsTableViewCell")
+        
         Network.newsTitleParsing(categories: name) {
             DispatchQueue.main.async {
                 self.tableView.reloadData()
             }
         }
+        
         Network.newsParsing(categories: name) {
             DispatchQueue.main.async {
                 self.tableView.reloadData()
@@ -31,9 +36,11 @@ class NewsTableViewController: UITableViewController {
     override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         return Network.titlesNews.results.count
     }
+    
     override func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
         return 70
     }
+    
     override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cellNews = tableView.dequeueReusableCell(withIdentifier: "NewsTableViewCell", for: indexPath)
         
@@ -41,6 +48,7 @@ class NewsTableViewController: UITableViewController {
         cellNews.textLabel?.text = arrayNewsTitles
         return cellNews
     }
+    
     override func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         let vc = ViewController()
         let cell = tableView.cellForRow(at: indexPath)
