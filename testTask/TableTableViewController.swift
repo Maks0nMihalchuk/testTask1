@@ -30,4 +30,12 @@ class TableTableViewController: UITableViewController {
     override func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
         return 70
     }
+    override func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+        let vc = NewsTableViewController()
+        let cell = tableView.cellForRow(at: indexPath)
+        vc.name = cell?.textLabel?.text ?? ""
+        self.present(vc, animated: true, completion: nil)
+        
+        
+    }
 }
