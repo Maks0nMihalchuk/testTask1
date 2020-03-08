@@ -20,6 +20,11 @@ class NewsTableViewController: UITableViewController {
                 self.tableView.reloadData()
             }
         }
+        Network.newsParsing(categories: name) {
+            DispatchQueue.main.async {
+                self.tableView.reloadData()
+            }
+        }
     }
 
     // MARK: - Table view data source
@@ -36,8 +41,11 @@ class NewsTableViewController: UITableViewController {
         cellNews.textLabel?.text = arrayNewsTitles
         return cellNews
     }
-    
-    
-    
-    
+    override func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+        let vc = ViewController()
+        let cell = tableView.cellForRow(at: indexPath)
+        vc.url = cell?.textLabel?.text ?? ""
+        vc.arr = Network.linksNews.results[indexPath.row].url
+        self.present(vc, animated: true, completion: nil)
+    }
 }

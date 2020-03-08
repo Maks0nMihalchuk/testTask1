@@ -8,12 +8,28 @@
 
 import UIKit
 import Alamofire
+import WebKit
 
-class ViewController: UIViewController {
-
+class ViewController: UIViewController, WKUIDelegate {
+    
+    var url = ""
+    var name = ""
+    var arr = ""
+    var webView: WKWebView!
+    
+    override func loadView() {
+        let webConfiguration = WKWebViewConfiguration()
+        webView = WKWebView(frame: .zero, configuration: webConfiguration)
+        webView.uiDelegate = self
+        view = webView
+    }
+    
     override func viewDidLoad() {
         super.viewDidLoad()
-        // Do any additional setup after loading the view.
+        
+        let myURL = URL(string: arr)
+        let myRequest = URLRequest(url: myURL!)
+        webView.load(myRequest)
     }
 
 

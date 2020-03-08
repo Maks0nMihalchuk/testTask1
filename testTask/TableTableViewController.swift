@@ -36,6 +36,9 @@ class TableTableViewController: UITableViewController {
         vc.name = cell?.textLabel?.text ?? ""
         self.present(vc, animated: true, completion: nil)
         
-        
+        let UrlVC = ViewController()
+        let cellURL = tableView.cellForRow(at: indexPath)
+        UrlVC.name = cellURL?.textLabel?.text ?? ""
+        self.present(UrlVC, animated: true, completion: nil)
     }
 }
